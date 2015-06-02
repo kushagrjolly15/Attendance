@@ -2,6 +2,7 @@ package com.example.kushagrjolly.attendance;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +15,8 @@ import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 
+import java.util.ArrayList;
+
 /**
  * Created by Kushagr Jolly on 30-May-15.
  */
@@ -24,11 +27,13 @@ public class MainActivity extends Activity{
     private static String NAMESPACE = "http://pack1/";
     private static String METHOD_NAME1 = "hello";
     private static String URL = "http://192.168.1.109:8080/pgs/test?wsdl";
-    private String resp,username,password;
+    private String username,password;
+    private ArrayList<String> resp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        resp= new ArrayList<>();
         setContentView(R.layout.activity_main);
         user=(EditText)findViewById(R.id.username);
         pass=(EditText)findViewById(R.id.password);
@@ -42,15 +47,15 @@ public class MainActivity extends Activity{
         username=user.getText().toString();
         password=pass.getText().toString();
         Log.d("user,pass",username+password);
-        if(user.getText().toString()!=null && pass.getText().toString()!=null){
+        if(!user.getText().toString().isEmpty() && !pass.getText().toString().isEmpty()){
             prgDialog.setMessage("Uploading data, please wait...");
             prgDialog.show();
             checklogin();
         }
-        else if(user.getText().toString()==""){
+        else if(user.getText().toString().equalsIgnoreCase("")){
             Toast.makeText(getApplicationContext(),"Please enter Username",Toast.LENGTH_SHORT).show();
         }
-        else if(pass.getText().toString()==null){
+        else if(pass.getText().toString().equalsIgnoreCase("")){
             Toast.makeText(getApplicationContext(),"Please enter Password",Toast.LENGTH_SHORT).show();
         }
         else {
@@ -89,9 +94,14 @@ public class MainActivity extends Activity{
 
                     if(result != null)
                     {
+                        Log.d("count", String.valueOf(result.getPropertyCount()));
                         //Get the first property and change the label text
-                        resp=result.getProperty(0).toString();
-                        Log.d("rsult", resp);
+                        for(int i=0;i<result.getPropertyCount();i++) {
+
+                            resp.add(result.getProperty(i).toString());
+                            Log.d("rsult", resp.get(i));
+                        }
+                        launchActivity(true);
                     }
                     else
                     {
@@ -110,5 +120,11 @@ public class MainActivity extends Activity{
                 //launchActivity(true);
             }
         }.execute(null, null, null);
+    }
+
+    private void launchActivity(boolean b) {
+        Intent i= new Intent(this,Attend.class);
+        i.putExtra("resp",resp);
+        startActivity(i);
     }
 }
