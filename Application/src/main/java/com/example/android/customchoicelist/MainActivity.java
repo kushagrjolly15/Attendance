@@ -28,8 +28,12 @@ public class MainActivity extends Activity{
     private static String SOAP_ACTION1 = "http://pack1/hello";
     private static String NAMESPACE = "http://pack1/";
     private static String METHOD_NAME1 = "hello";
+<<<<<<< HEAD:Application/src/main/java/com/example/android/customchoicelist/MainActivity.java
 <<<<<<< HEAD:app/src/main/java/com/example/kushagrjolly/attendance/MainActivity.java
     private static String URL = "http://172.16.6.87:8080/pgs/test?wsdl";
+=======
+    private static String URL = "http://172.16.6.55:8080/pgs/test?wsdl";
+>>>>>>> origin/master:Application/src/main/java/com/example/android/customchoicelist/MainActivity.java
 =======
     private static String URL = "http://172.16.6.55:8080/pgs/test?wsdl";
 >>>>>>> origin/master:Application/src/main/java/com/example/android/customchoicelist/MainActivity.java
