@@ -1,0 +1,11 @@
+D:\Project\Attendance\app\build\intermediates\classes\debug
+D:\Project\Attendance\app\build\intermediates\pre-dexed\debug\ksoap2-android-3.1.1-0815abc52cf1199d8751b1fa77771a44751c6092.jar
+D:\Project\Attendance\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-67cc017256b5cff13996df8ec09eb93993cf06ed.jar
+D:\Project\Attendance\app\build\intermediates\pre-dexed\debug\xmlpull-1.1.3.3-27e713fac4cb4c6183d191ba3ea79661b60d717a.jar
+D:\Project\Attendance\app\build\intermediates\pre-dexed\debug\ksoap2-j2se-3.1.1-67c756018ae74ebbb965b86c72c9797d41e3662b.jar
+D:\Project\Attendance\app\build\intermediates\pre-dexed\debug\ksoap2-base-3.1.1-eea84fd86cbae6be589a09dfbada8db46823892b.jar
+D:\Project\Attendance\app\build\intermediates\pre-dexed\debug\kobjects-j2me-0.0-SNAPSHOT-20040926-2-fc56eb981d28ef11867a9857b5dcfec5f10208e0.jar
+D:\Project\Attendance\app\build\intermediates\pre-dexed\debug\kxml-2.2.4-2ba378d3ffcaf8d1c288c8457c4958d14e75e35f.jar
+D:\Project\Attendance\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-8861940dcd9ee6df95f7edeb8dcec73d3d025a9d.jar
+D:\Project\Attendance\app\build\intermediates\pre-dexed\debug\classes-90928d63aed5a5da229ef9f86d1ad1a1707efc9e.jar
+D:\Project\Attendance\app\build\intermediates\pre-dexed\debug\classes-6238d3ce7062e34a7f4a94348930f4d59ceb9999.jar

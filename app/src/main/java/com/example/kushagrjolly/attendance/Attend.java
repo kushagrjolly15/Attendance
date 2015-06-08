@@ -1,19 +1,22 @@
 package com.example.kushagrjolly.attendance;
 
-import android.app.Activity;
 import android.app.DialogFragment;
+import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.database.DataSetObserver;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.SoapObject;
@@ -25,18 +28,19 @@ import java.util.ArrayList;
 /**
  * Created by Kushagr Jolly on 01-Jun-15.
  */
-public class Attend extends Activity implements AdapterView.OnItemSelectedListener {
+public class Attend extends ListActivity implements AdapterView.OnItemSelectedListener {
     ProgressDialog prgDialog;
     private static String SOAP_ACTION1 = "http://pack1/names";
     private static String NAMESPACE = "http://pack1/";
     private static String METHOD_NAME1 = "names";
-    private static String URL = "http://192.168.1.109:8080/pgs/test?wsdl";
+    private static String URL = "http://172.16.6.87:8080/pgs/test?wsdl";
     ArrayList<String> resp=new ArrayList<>();
     ArrayList<String> sname=new ArrayList<>();
     private Spinner spinner;
-    private Button b;
+    private static Button b,b1;
     String courseName;
     ListView listView ;
+    String[] values ={"One","Two","Three","Four","Five"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +54,10 @@ public class Attend extends Activity implements AdapterView.OnItemSelectedListen
                 Log.d("resp", resp.get(j));
         }
         spinner = (Spinner) findViewById(R.id.spinner);
-        listView = (ListView) findViewById(R.id.list);
+        listView = (ListView) findViewById(R.id.list2);
+        ArrayAdapter<String> ladapter = new ArrayAdapter<String>(this,
+                android.R.layout.activity_list_item,values);
+        listView.setAdapter(ladapter);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item,resp);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -67,13 +74,20 @@ public class Attend extends Activity implements AdapterView.OnItemSelectedListen
             }
         });
 
+
     }
 
+    public static void getDate(String d)
+    {
+        b.setText(d);
+
+    }
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         courseName=spinner.getSelectedItem().toString();
         //Log.d("couse",courseName);
         names();
+
 
     }
     public void names() {
@@ -121,7 +135,7 @@ public class Attend extends Activity implements AdapterView.OnItemSelectedListen
                     }
                     else
                     {
-//                        Toast.makeText(getApplicationContext(), "No Response",Toast.LENGTH_LONG).show();
+
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -133,38 +147,82 @@ public class Attend extends Activity implements AdapterView.OnItemSelectedListen
             protected void onPostExecute(String msg) {
 
                 prgDialog.hide();
-                ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_list_item_1, android.R.id.text1, sname);
 
-
-                // Assign adapter to ListView
-                listView.setAdapter(adapter1);
-
-                // ListView Item Click Listener
-                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view,
-                                            int position, long id) {
-
-                        // ListView Clicked item index
-                        int itemPosition     = position;
-
-                        // ListView Clicked item value
-                        String  itemValue    = (String) listView.getItemAtPosition(position);
-
-                        // Show Alert
-                        Toast.makeText(getApplicationContext(),
-                                "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
-                                .show();
-
-                    }
-
-                });
             }
         }.execute(null, null, null);
     }
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    private class MyAdapter implements ListAdapter {
+
+
+        @Override
+        public void registerDataSetObserver(DataSetObserver observer) {
+
+        }
+
+        @Override
+        public void unregisterDataSetObserver(DataSetObserver observer) {
+
+        }
+
+        @Override
+        public int getCount() {
+            return values.length;
+        }
+
+        @Override
+        public String getItem(int position) {
+            return values[position];
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return values[position].hashCode();
+        }
+
+        @Override
+        public boolean hasStableIds() {
+            return false;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup container) {
+            if (convertView == null) {
+                convertView = getLayoutInflater().inflate(R.layout.activity_item_list, container, false);
+            }
+
+            ((TextView) convertView.findViewById(android.R.id.text1))
+                    .setText(getItem(position));
+            return convertView;
+        }
+
+        @Override
+        public int getItemViewType(int position) {
+            return 0;
+        }
+
+        @Override
+        public int getViewTypeCount() {
+            return 0;
+        }
+
+        @Override
+        public boolean isEmpty() {
+            return false;
+        }
+
+        @Override
+        public boolean areAllItemsEnabled() {
+            return false;
+        }
+
+        @Override
+        public boolean isEnabled(int position) {
+            return false;
+        }
     }
 }
