@@ -22,4 +22,4 @@
     <item android:state_checked="false" android:drawable="@drawable/ic_hideable_item_unchecked" />
     <item android:drawable="@drawable/ic_hideable_item_checked" />
 </selector>
-<!-- From: file:/home/manav/AndroidStudioProjects/CustomChoiceList/Application/src/main/res/drawable/ic_hideable_item.xml -->
+<!-- From: file:/C:/Users/Kushagr%20Jolly/Downloads/CustomChoiceList/Application/src/main/res/drawable/ic_hideable_item.xml -->

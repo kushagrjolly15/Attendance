@@ -17,9 +17,8 @@
 package com.example.android.customchoicelist;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.View;
 import android.widget.Checkable;
 import android.widget.LinearLayout;
 
@@ -33,12 +32,16 @@ import android.widget.LinearLayout;
  */
 public class CheckableLinearLayout extends LinearLayout implements Checkable {
     private static final int[] CHECKED_STATE_SET = {android.R.attr.state_checked};
-
+    public static final String MyPREFERENCES = "MyPrefs";
     private boolean mChecked = false;
-
+    SharedPreferences.Editor editor;
+    private static Context context;
+    SharedPreferences settings;
+    String a,c;
     public CheckableLinearLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
+
 
     public boolean isChecked() {
 
@@ -48,13 +51,22 @@ public class CheckableLinearLayout extends LinearLayout implements Checkable {
     public void setChecked(boolean b) {
         if (b != mChecked) {
             mChecked = b;
-
             refreshDrawableState();
-            //Log.d("present", String.valueOf(mChecked));
+        }
+        if(mChecked==true){
+            a="present";
+            editor.putString("attendance", a);
+            editor.commit();
+        }
+        else{
+            c="absent";
+            editor.putString("attendance", c);
+            editor.commit();
         }
     }
 
     public void toggle() {
+
 
         setChecked(!mChecked);
     }
@@ -62,24 +74,15 @@ public class CheckableLinearLayout extends LinearLayout implements Checkable {
     @Override
     public int[] onCreateDrawableState(int extraSpace) {
         final int[] drawableState = super.onCreateDrawableState(extraSpace + 1);
-        markattendance();
+        settings=context.getSharedPreferences(MyPREFERENCES,Context.MODE_PRIVATE);
+        editor = settings.edit();
         if (isChecked()) {
             mergeDrawableStates(drawableState, CHECKED_STATE_SET);
-            if(mChecked==true){
-                Log.d("log1","present");
-            }
-            else if(mChecked==false){
-                Log.d("log2","absent");
-            }
         }
 
-        // /Log.d("checked", String.valueOf(CHECKED_STATE_SET));
-        //Log.d("xyz", String.valueOf(drawableState));
         return drawableState;
     }
 
-    private void markattendance() {
 
-    }
 
 }

@@ -19,17 +19,19 @@ package com.example.android.customchoicelist;
 import android.app.DialogFragment;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.CheckBox;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,25 +53,26 @@ public class StudentListActivity extends ListActivity implements AdapterView.OnI
 
     static Button b;
     Spinner spinner;
-    String[] values;
     ProgressDialog prgDialog;
     private static String SOAP_ACTION1 = "http://pack1/names";
     private static String NAMESPACE = "http://pack1/";
     private static String METHOD_NAME1 = "names";
-    private static String URL = "http://172.16.6.55:8080/pgs/test?wsdl";
+    private static String URL = "http://192.168.1.105:8080/pgs/test?wsdl";
     ArrayList<String> resp=new ArrayList<>();
     ArrayList<String> sname;
     ArrayList<String> atten;
     String userType;
-    static int num =0;
-    boolean mchecked=false;
     boolean[] isPresent;
+    MyCustomAdapter dataAdapter = null;
+    ArrayList<String> studentsPresent = new ArrayList<>();
+    ArrayList<String> studentsAbsent = new ArrayList<>();
 
-   private String courseName;
+
+    private String courseName;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.sample_main);
+        setContentView(R.layout.xyz);
 
         prgDialog = new ProgressDialog(this);
         // Set Cancelable as False
@@ -109,8 +112,183 @@ public class StudentListActivity extends ListActivity implements AdapterView.OnI
         spinner.setOnItemSelectedListener(this);
 
 
+    }
+
+    public void  displayListView(){
+        ArrayList<Student> studentList = new ArrayList<Student>();
+        for (int i = 0; i <sname.size(); i++) {
+
+            Student student = new Student(sname.get(i),false);
+            studentList.add(student);
+        }
+        //create an ArrayAdaptar from the String Array
+        dataAdapter = new MyCustomAdapter(this,
+                R.layout.student_info,studentList);
+        ListView listView = (ListView) findViewById(R.id.listView1);
+        // Assign adapter to ListView
+        listView.setAdapter(dataAdapter);
+    }
+    private class MyCustomAdapter extends ArrayAdapter<Student> {
+
+        private ArrayList<Student> studentList;
+
+        public MyCustomAdapter(Context context, int textViewResourceId,
+                               ArrayList<Student> studentList) {
+            super(context, textViewResourceId, studentList);
+            this.studentList = new ArrayList<Student>();
+            this.studentList.addAll(studentList);
+        }
+
+        private class ViewHolder {
+            TextView studentName;
+            CheckBox name;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            ViewHolder holder = null;
+
+
+            if (convertView == null) {
+                LayoutInflater vi = (LayoutInflater)getSystemService(
+                        Context.LAYOUT_INFLATER_SERVICE);
+                convertView = vi.inflate(R.layout.student_info, null);
+
+                holder = new ViewHolder();
+                holder.studentName = (TextView) convertView.findViewById(R.id.code);
+                holder.name = (CheckBox) convertView.findViewById(R.id.checkBox1);
+                convertView.setTag(holder);
+
+                holder.name.setOnClickListener( new View.OnClickListener() {
+                    public void onClick(View v) {
+                        CheckBox cb = (CheckBox) v ;
+                        Student student  = (Student) cb.getTag();
+                        student.setSelected(cb.isChecked());
+                    }
+                });
+            }
+            else {
+                holder = (ViewHolder) convertView.getTag();
+            }
+
+            Student student = studentList.get(position);
+            Log.d("Name",student.toString());
+            holder.name.setText(student.getName());
+            holder.name.setChecked(student.isSelected());
+            holder.name.setTag(student);
+
+            return convertView;
+
+        }
 
     }
+
+    private void checkButtonClick() {
+
+
+        Button myButton = (Button) findViewById(R.id.findSelected);
+        myButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                StringBuffer responseText = new StringBuffer();
+                responseText.append("The following were selected...\n");
+
+                ArrayList<Student> studentList = dataAdapter.studentList;
+                for(int i=0;i<studentList.size();i++){
+                    Student student = studentList.get(i);
+                    if(student.isSelected()){
+                        studentsPresent.add(student.getName());
+                        responseText.append("\n" + student.getName() + " Present");
+                    }
+                    else{
+                        studentsAbsent.add(student.getName());
+                        responseText.append("\n" + student.getName()+" Absent");}
+                }
+                upload();
+                Toast.makeText(getApplicationContext(),
+                        responseText, Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+    }
+    public void upload() {
+        new AsyncTask<Void, Void, String>() {
+
+            protected void onPreExecute() {
+                //prgDialog.setMessage("Uploading data, please wait...");
+                prgDialog.show();
+            };
+
+            @Override
+            protected String doInBackground(Void... params) {
+                SoapObject request1 = new SoapObject(NAMESPACE, METHOD_NAME1);
+                request1.addProperty("courseName",courseName);
+
+                //Declare the version of the SOAP request
+                SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER10);
+
+                envelope.setOutputSoapObject(request1);
+                HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
+                //this is the actual part that will call the webservice
+                try {
+                    androidHttpTransport.call(SOAP_ACTION1, envelope);
+                } catch (Exception e)  {
+                    e.printStackTrace();
+                }
+                try {
+
+
+                    // Get the SoapResult from the envelope body.
+                    SoapObject result1 = (SoapObject)envelope.bodyIn;
+
+                    if(result1 != null)
+                    {
+                        sname=new ArrayList<>();
+                        for (int i=0;i<sname.size();i++)
+                            sname.remove(i);
+                        atten=new ArrayList<String>();
+                        Log.d("count", String.valueOf(result1.getPropertyCount()));
+                        //Get the first property and change the label text
+                        for(int i=0;i<result1.getPropertyCount();i++) {
+
+                            sname.add(result1.getProperty(i).toString());
+                            Log.d("cxz",sname.get(i));
+                        }
+                        isPresent= new boolean[sname.size()];
+                        for (int i=0;i<isPresent.length;i++)
+                            isPresent[i]=false;
+                    }
+                    else
+                    {
+//                        Toast.makeText(getApplicationContext(), "No Response",Toast.LENGTH_LONG).show();
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                return "";
+            }
+
+            @Override
+            protected void onPostExecute(String msg) {
+
+                prgDialog.hide();
+
+                //Student List
+                displayListView();
+
+                checkButtonClick();
+
+            }
+
+        }.execute(null, null, null);
+    }
+
+
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -159,8 +337,7 @@ public class StudentListActivity extends ListActivity implements AdapterView.OnI
                         for(int i=0;i<result1.getPropertyCount();i++) {
 
                             sname.add(result1.getProperty(i).toString());
-                            atten.add("absent");
-                            Log.d("student names", sname.get(i));
+                            Log.d("cxz",sname.get(i));
                         }
                         isPresent= new boolean[sname.size()];
                         for (int i=0;i<isPresent.length;i++)
@@ -181,15 +358,12 @@ public class StudentListActivity extends ListActivity implements AdapterView.OnI
             protected void onPostExecute(String msg) {
 
                 prgDialog.hide();
-                values= new String[sname.size()];
-                for(int i=0;i<values.length;i++) {
-                    values[i] = sname.get(i);
-                    Log.d("VAL",values[i]);
-                }
 
+                //Student List
+                displayListView();
 
-                setListAdapter(new MyAdapter());
-                Log.d("mchecked", String.valueOf(mchecked));
+                checkButtonClick();
+
             }
 
         }.execute(null, null, null);
@@ -200,59 +374,4 @@ public class StudentListActivity extends ListActivity implements AdapterView.OnI
 
     }
 
-    /**
-     * A simple array adapter that creates a list of cheeses.
-     */
-    private class MyAdapter extends BaseAdapter {
-
-        @Override
-        public int getCount() {
-            return values.length;
-        }
-
-        @Override
-        public String getItem(int position) {
-            return values[position];
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return values[position].hashCode();
-        }
-
-        @Override
-        public View getView(final int position, View convertView, ViewGroup container) {
-          //  atten.set(position,"absent");
-            //num++;
-
-            ImageView imageView = (ImageView)findViewById(R.id.img);
-            /*imageView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if(isPresent[position])
-                        isPresent[position]=false;
-                    else
-                        isPresent[position]=true;
-                }
-            });*/
-            if (convertView == null) {
-               // Log.d("Attendance",sname.get(position)+" "+atten.get(position));
-
-                convertView = getLayoutInflater().inflate(R.layout.list_item, container, mchecked);
-               // convertView.is
-            }/*
-            else if(convertView!=null){
-                atten.remove(position);
-                atten.add("present");
-                Log.d("present", atten.get(position));
-
-            }*/
-
-                    ((TextView) convertView.findViewById(android.R.id.text1))
-                    .setText(getItem(position));
-
-           // Log.d("isPresent",sname.get(position)+isPresent[position]);
-            return convertView;
-        }
-    }
 }

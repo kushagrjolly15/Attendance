@@ -24,4 +24,4 @@
         android:onClick="login"
         android:id="@+id/button"
         android:layout_gravity="center_horizontal" />
-</LinearLayout><!-- From: file:/home/manav/AndroidStudioProjects/CustomChoiceList/Application/src/main/res/layout/activity_main.xml -->
+</LinearLayout><!-- From: file:/C:/Users/Kushagr%20Jolly/Downloads/CustomChoiceList/Application/src/main/res/layout/activity_main.xml -->
