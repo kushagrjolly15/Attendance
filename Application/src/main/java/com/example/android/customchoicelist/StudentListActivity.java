@@ -34,7 +34,6 @@ import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.SoapObject;
@@ -59,18 +58,17 @@ public class StudentListActivity extends ListActivity implements AdapterView.OnI
     private static String NAMESPACE = "http://pack1/";
     private static String METHOD_NAME1 = "names";
     private static String METHOD_NAME2 = "insert";
-    private static String URL = "http://172.16.6.84:8080/pgs/test?wsdl";
+    private static String URL = "http://192.168.1.105:8080/pgs/test?wsdl";
     ArrayList<String> resp=new ArrayList<>();
     ArrayList<String> sname;
-    ArrayList<String> atten;
+
     String userType;
     String date;
-    String courseID;
     MyCustomAdapter dataAdapter = null;
     ArrayList<String> studentsPresent = new ArrayList<>();
     ArrayList<String> studentsAbsent;
     ArrayList<String> rollnum = new ArrayList<>();
-
+    String x,y;
 
     private String courseName;
 
@@ -206,7 +204,7 @@ public class StudentListActivity extends ListActivity implements AdapterView.OnI
                     Student student = studentList.get(i);
                     if(student.isSelected()){
                         studentsPresent.add(rollnum.get(i));
-                        Log.d("Present ", studentsPresent.get(i) + " " + sname.get(i));
+                        //Log.d("Present ", studentsPresent.get(i) + " " + sname.get(i));
                         //responseText.append("\n" + studentsPresent + " Present");
                     }
                     else if(!student.isSelected()){
@@ -220,7 +218,17 @@ public class StudentListActivity extends ListActivity implements AdapterView.OnI
                 }
                 for (int i=0;i<studentsAbsent.size();i++)
                     Log.d("Absent ", studentsAbsent.get(i) + " " + sname.get(i));
-                upload();
+                x=studentsPresent.get(0);
+                for (int i=1;i<studentsPresent.size();i++)
+                    x=x+"/"+studentsPresent.get(i);
+
+                y=studentsAbsent.get(0);
+                for (int i=1;i<studentsAbsent.size();i++)
+                    y=y+"/"+studentsAbsent.get(i);
+                Log.d("Present",x);
+
+
+               upload();
                 //Toast.makeText(getApplicationContext(),
                   //      responseText, Toast.LENGTH_LONG).show();
 
@@ -238,10 +246,11 @@ public class StudentListActivity extends ListActivity implements AdapterView.OnI
 
             @Override
             protected String doInBackground(Void... params) {
+
                 SoapObject request2 = new SoapObject(NAMESPACE, METHOD_NAME2);
-                request2.addProperty("present",studentsPresent);
+                request2.addProperty("present",x);
                 request2.addProperty("date",date);
-                request2.addProperty("absent",studentsAbsent);
+                request2.addProperty("absent",y);
 
                 //Declare the version of the SOAP request
                 SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER10);
@@ -330,7 +339,7 @@ public class StudentListActivity extends ListActivity implements AdapterView.OnI
                         sname=new ArrayList<>();
                         for (int i=0;i<sname.size();i++)
                             sname.remove(i);
-                        atten=new ArrayList<String>();
+
                         Log.d("count", String.valueOf(result1.getPropertyCount()));
                         //Get the first property and change the label text
                         for(int i=0;i<result1.getPropertyCount();i++) {
