@@ -3,8 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Application/Application.iml" filepath="$PROJECT_DIR$/Application/Application.iml" />
-      <module fileurl="file://$PROJECT_DIR$/CustomChoiceList.iml" filepath="$PROJECT_DIR$/CustomChoiceList.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Attendance.iml" filepath="$PROJECT_DIR$/Attendance.iml" />
     </modules>
   </component>
 </project>
-

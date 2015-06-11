@@ -22,4 +22,4 @@
         android:layout_alignBottom="@+id/checkBox1"
         android:layout_toRightOf="@+id/checkBox1" />
 
-</RelativeLayout><!-- From: file:/C:/Users/Kushagr%20Jolly/Downloads/CustomChoiceList/Application/src/main/res/layout/student_info.xml -->
+</RelativeLayout><!-- From: file:/home/manav/GITHUB/Attendance/Application/src/main/res/layout/student_info.xml -->

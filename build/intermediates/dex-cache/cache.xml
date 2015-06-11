@@ -2,67 +2,67 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Kushagr Jolly\.gradle\caches\modules-2\files-2.1\net.sourceforge.kxml\kxml\2.2.4\1642506e490548d96984b8370e44257c156097f7\kxml-2.2.4.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="1642506e490548d96984b8370e44257c156097f7">
-        <dex dex="C:\Users\Kushagr Jolly\Downloads\CustomChoiceList\Application\build\intermediates\pre-dexed\debug\kxml-2.2.4-2ba378d3ffcaf8d1c288c8457c4958d14e75e35f.jar" />
-    </item>
-    <item
-        jar="C:\Users\Kushagr Jolly\.gradle\caches\modules-2\files-2.1\com.google.code.ksoap2-android\ksoap2-base\3.1.1\6649e7c6dc2564ee70a5f4551aa498328b680eda\ksoap2-base-3.1.1.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="6649e7c6dc2564ee70a5f4551aa498328b680eda">
-        <dex dex="C:\Users\Kushagr Jolly\Downloads\CustomChoiceList\Application\build\intermediates\pre-dexed\debug\ksoap2-base-3.1.1-eea84fd86cbae6be589a09dfbada8db46823892b.jar" />
-    </item>
-    <item
-        jar="C:\Users\Kushagr Jolly\.gradle\caches\modules-2\files-2.1\com.google.code.ksoap2-android\ksoap2-android\3.1.1\dbbe6c842ff40ea1568ff9f45854ede509ab1ea9\ksoap2-android-3.1.1.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="dbbe6c842ff40ea1568ff9f45854ede509ab1ea9">
-        <dex dex="C:\Users\Kushagr Jolly\Downloads\CustomChoiceList\Application\build\intermediates\pre-dexed\debug\ksoap2-android-3.1.1-0815abc52cf1199d8751b1fa77771a44751c6092.jar" />
-    </item>
-    <item
-        jar="D:\Android Dev\android-sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.2\support-annotations-21.0.2.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="99373741f99a0556ee293c41e8faa1ca3ae8a4e6">
-        <dex dex="C:\Users\Kushagr Jolly\Downloads\CustomChoiceList\Application\build\intermediates\pre-dexed\debug\support-annotations-21.0.2-20b10db0c2e3abdaa307da26ab67da2f745545d4.jar" />
-    </item>
-    <item
-        jar="C:\Users\Kushagr Jolly\.gradle\caches\modules-2\files-2.1\org.xmlpull\xmlpull\1.1.3.3\9b62254da05ce6399a09164362da7b2419de63ca\xmlpull-1.1.3.3.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="9b62254da05ce6399a09164362da7b2419de63ca">
-        <dex dex="C:\Users\Kushagr Jolly\Downloads\CustomChoiceList\Application\build\intermediates\pre-dexed\debug\xmlpull-1.1.3.3-27e713fac4cb4c6183d191ba3ea79661b60d717a.jar" />
-    </item>
-    <item
-        jar="C:\Users\Kushagr Jolly\Downloads\CustomChoiceList\Application\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.2\libs\internal_impl-21.0.2.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="962e8b12569c56dbdcf8367eb4eac8bb129cd18f">
-        <dex dex="C:\Users\Kushagr Jolly\Downloads\CustomChoiceList\Application\build\intermediates\pre-dexed\debug\internal_impl-21.0.2-e956a68d0394629ab9b9fd29bd7b010639de453c.jar" />
-    </item>
-    <item
-        jar="C:\Users\Kushagr Jolly\Downloads\CustomChoiceList\Application\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.2\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="d1bf02de1c56d942e7a9d093b8610ba1ef4128e3">
-        <dex dex="C:\Users\Kushagr Jolly\Downloads\CustomChoiceList\Application\build\intermediates\pre-dexed\debug\classes-b58dd2ee786da2e7919db85b6dea22349c08e580.jar" />
-    </item>
-    <item
-        jar="C:\Users\Kushagr Jolly\.gradle\caches\modules-2\files-2.1\com.google.code.ksoap2-android\ksoap2-j2se\3.1.1\3e030eeb9351f670dbfc572f3c16558d5f44cc59\ksoap2-j2se-3.1.1.jar"
+        jar="/home/manav/.gradle/caches/modules-2/files-2.1/com.google.code.ksoap2-android/ksoap2-j2se/3.1.1/3e030eeb9351f670dbfc572f3c16558d5f44cc59/ksoap2-j2se-3.1.1.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="3e030eeb9351f670dbfc572f3c16558d5f44cc59">
-        <dex dex="C:\Users\Kushagr Jolly\Downloads\CustomChoiceList\Application\build\intermediates\pre-dexed\debug\ksoap2-j2se-3.1.1-67c756018ae74ebbb965b86c72c9797d41e3662b.jar" />
+        <dex dex="/home/manav/GITHUB/Attendance/Application/build/intermediates/pre-dexed/debug/ksoap2-j2se-3.1.1-426fb39755e054bf5df2a50697cfdd946e6cfab7.jar" />
     </item>
     <item
-        jar="C:\Users\Kushagr Jolly\.gradle\caches\modules-2\files-2.1\net.sourceforge.kobjects\kobjects-j2me\0.0-SNAPSHOT-20040926-2\9246ca92b16c65114a7fb80b906801e06be95305\kobjects-j2me-0.0-SNAPSHOT-20040926-2.jar"
+        jar="/home/manav/GITHUB/Attendance/Application/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.2/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="d1bf02de1c56d942e7a9d093b8610ba1ef4128e3">
+        <dex dex="/home/manav/GITHUB/Attendance/Application/build/intermediates/pre-dexed/debug/classes-4435accedcc68fa87ed704cb30e1064c424101b7.jar" />
+    </item>
+    <item
+        jar="/home/manav/.gradle/caches/modules-2/files-2.1/com.google.code.ksoap2-android/ksoap2-base/3.1.1/6649e7c6dc2564ee70a5f4551aa498328b680eda/ksoap2-base-3.1.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="6649e7c6dc2564ee70a5f4551aa498328b680eda">
+        <dex dex="/home/manav/GITHUB/Attendance/Application/build/intermediates/pre-dexed/debug/ksoap2-base-3.1.1-a248696458755163a02d4859ed591b34f0b1bc63.jar" />
+    </item>
+    <item
+        jar="/home/manav/.gradle/caches/modules-2/files-2.1/com.google.code.ksoap2-android/ksoap2-android/3.1.1/dbbe6c842ff40ea1568ff9f45854ede509ab1ea9/ksoap2-android-3.1.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="dbbe6c842ff40ea1568ff9f45854ede509ab1ea9">
+        <dex dex="/home/manav/GITHUB/Attendance/Application/build/intermediates/pre-dexed/debug/ksoap2-android-3.1.1-4bba88475cda84a1e27f7db2b7209301bb253ca5.jar" />
+    </item>
+    <item
+        jar="/home/manav/.gradle/caches/modules-2/files-2.1/net.sourceforge.kxml/kxml/2.2.4/1642506e490548d96984b8370e44257c156097f7/kxml-2.2.4.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1642506e490548d96984b8370e44257c156097f7">
+        <dex dex="/home/manav/GITHUB/Attendance/Application/build/intermediates/pre-dexed/debug/kxml-2.2.4-7cd397717468928336b81a10f04a7d62f93d7ea1.jar" />
+    </item>
+    <item
+        jar="/home/manav/.gradle/caches/modules-2/files-2.1/org.xmlpull/xmlpull/1.1.3.3/9b62254da05ce6399a09164362da7b2419de63ca/xmlpull-1.1.3.3.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="9b62254da05ce6399a09164362da7b2419de63ca">
+        <dex dex="/home/manav/GITHUB/Attendance/Application/build/intermediates/pre-dexed/debug/xmlpull-1.1.3.3-9a634bc9b966cf075420eb47e15611bbedfee701.jar" />
+    </item>
+    <item
+        jar="/home/manav/Android/android-sdk-linux/extras/android/m2repository/com/android/support/support-annotations/21.0.2/support-annotations-21.0.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="99373741f99a0556ee293c41e8faa1ca3ae8a4e6">
+        <dex dex="/home/manav/GITHUB/Attendance/Application/build/intermediates/pre-dexed/debug/support-annotations-21.0.2-1b2edbba99e1d8ad742aada691c50ced943d6338.jar" />
+    </item>
+    <item
+        jar="/home/manav/GITHUB/Attendance/Application/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.2/libs/internal_impl-21.0.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="962e8b12569c56dbdcf8367eb4eac8bb129cd18f">
+        <dex dex="/home/manav/GITHUB/Attendance/Application/build/intermediates/pre-dexed/debug/internal_impl-21.0.2-cc5b04251c95fd1175bbd43bc33176be518006d6.jar" />
+    </item>
+    <item
+        jar="/home/manav/.gradle/caches/modules-2/files-2.1/net.sourceforge.kobjects/kobjects-j2me/0.0-SNAPSHOT-20040926-2/9246ca92b16c65114a7fb80b906801e06be95305/kobjects-j2me-0.0-SNAPSHOT-20040926-2.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="9246ca92b16c65114a7fb80b906801e06be95305">
-        <dex dex="C:\Users\Kushagr Jolly\Downloads\CustomChoiceList\Application\build\intermediates\pre-dexed\debug\kobjects-j2me-0.0-SNAPSHOT-20040926-2-fc56eb981d28ef11867a9857b5dcfec5f10208e0.jar" />
+        <dex dex="/home/manav/GITHUB/Attendance/Application/build/intermediates/pre-dexed/debug/kobjects-j2me-0.0-SNAPSHOT-20040926-2-c62cb2af514403a3aba3c89023c93625a803f38f.jar" />
     </item>
 
 </items>

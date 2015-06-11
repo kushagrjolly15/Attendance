@@ -55,17 +55,21 @@ public class StudentListActivity extends ListActivity implements AdapterView.OnI
     Spinner spinner;
     ProgressDialog prgDialog;
     private static String SOAP_ACTION1 = "http://pack1/names";
+    private static String SOAP_ACTION2 = "http://pack1/insert";
     private static String NAMESPACE = "http://pack1/";
     private static String METHOD_NAME1 = "names";
-    private static String URL = "http://192.168.1.105:8080/pgs/test?wsdl";
+    private static String METHOD_NAME2 = "insert";
+    private static String URL = "http://172.16.6.84:8080/pgs/test?wsdl";
     ArrayList<String> resp=new ArrayList<>();
     ArrayList<String> sname;
     ArrayList<String> atten;
     String userType;
-    boolean[] isPresent;
+    String date;
+    String courseID;
     MyCustomAdapter dataAdapter = null;
     ArrayList<String> studentsPresent = new ArrayList<>();
-    ArrayList<String> studentsAbsent = new ArrayList<>();
+    ArrayList<String> studentsAbsent;
+    ArrayList<String> rollnum = new ArrayList<>();
 
 
     private String courseName;
@@ -89,8 +93,8 @@ public class StudentListActivity extends ListActivity implements AdapterView.OnI
         b=(Button)findViewById(R.id.button);
         if(userType.contentEquals("gu") || userType.contentEquals("ft")){
             Calendar c = Calendar.getInstance();
-            String d = c.get(Calendar.DATE)+"/"+c.get(Calendar.MONTH)+"/"+c.get(Calendar.YEAR);
-            b.setText(d);
+            date = c.get(Calendar.DATE)+"/"+c.get(Calendar.MONTH)+"/"+c.get(Calendar.YEAR);
+            b.setText(date);
         }else if(userType.contentEquals("pr") || userType.contentEquals("prhd")){
 
 
@@ -197,19 +201,28 @@ public class StudentListActivity extends ListActivity implements AdapterView.OnI
                 responseText.append("The following were selected...\n");
 
                 ArrayList<Student> studentList = dataAdapter.studentList;
+                studentsAbsent = new ArrayList<>();
                 for(int i=0;i<studentList.size();i++){
                     Student student = studentList.get(i);
                     if(student.isSelected()){
-                        studentsPresent.add(student.getName());
-                        responseText.append("\n" + student.getName() + " Present");
+                        studentsPresent.add(rollnum.get(i));
+                        Log.d("Present ", studentsPresent.get(i) + " " + sname.get(i));
+                        //responseText.append("\n" + studentsPresent + " Present");
                     }
-                    else{
-                        studentsAbsent.add(student.getName());
-                        responseText.append("\n" + student.getName()+" Absent");}
+                    else if(!student.isSelected()){
+                        studentsAbsent.add(rollnum.get(i));
+                        //String ab =rollnum.get(i);
+
+
+                    //    responseText.append("\n" + studentsAbsent.get(i)+" Absent");
+                    }
+
                 }
+                for (int i=0;i<studentsAbsent.size();i++)
+                    Log.d("Absent ", studentsAbsent.get(i) + " " + sname.get(i));
                 upload();
-                Toast.makeText(getApplicationContext(),
-                        responseText, Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(),
+                  //      responseText, Toast.LENGTH_LONG).show();
 
             }
         });
@@ -225,17 +238,19 @@ public class StudentListActivity extends ListActivity implements AdapterView.OnI
 
             @Override
             protected String doInBackground(Void... params) {
-                SoapObject request1 = new SoapObject(NAMESPACE, METHOD_NAME1);
-                request1.addProperty("courseName",courseName);
+                SoapObject request2 = new SoapObject(NAMESPACE, METHOD_NAME2);
+                request2.addProperty("present",studentsPresent);
+                request2.addProperty("date",date);
+                request2.addProperty("absent",studentsAbsent);
 
                 //Declare the version of the SOAP request
                 SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER10);
 
-                envelope.setOutputSoapObject(request1);
+                envelope.setOutputSoapObject(request2);
                 HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
                 //this is the actual part that will call the webservice
                 try {
-                    androidHttpTransport.call(SOAP_ACTION1, envelope);
+                    androidHttpTransport.call(SOAP_ACTION2, envelope);
                 } catch (Exception e)  {
                     e.printStackTrace();
                 }
@@ -247,20 +262,9 @@ public class StudentListActivity extends ListActivity implements AdapterView.OnI
 
                     if(result1 != null)
                     {
-                        sname=new ArrayList<>();
-                        for (int i=0;i<sname.size();i++)
-                            sname.remove(i);
-                        atten=new ArrayList<String>();
-                        Log.d("count", String.valueOf(result1.getPropertyCount()));
-                        //Get the first property and change the label text
-                        for(int i=0;i<result1.getPropertyCount();i++) {
+                        String a;
+                        a=result1.getProperty(0).toString();
 
-                            sname.add(result1.getProperty(i).toString());
-                            Log.d("cxz",sname.get(i));
-                        }
-                        isPresent= new boolean[sname.size()];
-                        for (int i=0;i<isPresent.length;i++)
-                            isPresent[i]=false;
                     }
                     else
                     {
@@ -277,11 +281,6 @@ public class StudentListActivity extends ListActivity implements AdapterView.OnI
             protected void onPostExecute(String msg) {
 
                 prgDialog.hide();
-
-                //Student List
-                displayListView();
-
-                checkButtonClick();
 
             }
 
@@ -335,18 +334,19 @@ public class StudentListActivity extends ListActivity implements AdapterView.OnI
                         Log.d("count", String.valueOf(result1.getPropertyCount()));
                         //Get the first property and change the label text
                         for(int i=0;i<result1.getPropertyCount();i++) {
-
-                            sname.add(result1.getProperty(i).toString());
+                            String x=result1.getProperty(i).toString();
+                            String arr[] = x.split("#");
+                            rollnum.add(arr[1]);
+                            sname.add(arr[0]);
                             Log.d("cxz",sname.get(i));
                         }
-                        isPresent= new boolean[sname.size()];
-                        for (int i=0;i<isPresent.length;i++)
-                            isPresent[i]=false;
+
                     }
                     else
                     {
 //                        Toast.makeText(getApplicationContext(), "No Response",Toast.LENGTH_LONG).show();
                     }
+
 
                 } catch (Exception e) {
                     e.printStackTrace();
