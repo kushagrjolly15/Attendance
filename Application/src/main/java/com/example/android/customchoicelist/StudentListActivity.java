@@ -43,11 +43,6 @@ import org.ksoap2.transport.HttpTransportSE;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-/**
- * This sample demonstrates how to create custom single- or multi-choice
- * {@link android.widget.ListView} UIs. The most interesting bits are in
- * the <code>res/layout/</code> directory of this sample.
- */
 public class StudentListActivity extends ListActivity implements AdapterView.OnItemSelectedListener{
 
     static Button b;
@@ -61,7 +56,7 @@ public class StudentListActivity extends ListActivity implements AdapterView.OnI
     private static String URL = "http://192.168.1.105:8080/pgs/test?wsdl";
     ArrayList<String> resp=new ArrayList<>();
     ArrayList<String> sname;
-
+    ArrayList<String> atten;
     String userType;
     String date;
     MyCustomAdapter dataAdapter = null;

@@ -24,4 +24,4 @@
         android:onClick="login"
         android:id="@+id/button"
         android:layout_gravity="center_horizontal" />
-</LinearLayout><!-- From: file:/D:/Project/Attendance/Application/src/main/res/layout/activity_main.xml -->
+</LinearLayout><!-- From: file:/C:/Users/Manav/Documents/AndroidStudioProjects/Attendance-master/Application/src/main/res/layout/activity_main.xml -->

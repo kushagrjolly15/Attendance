@@ -1,8 +1,5 @@
 package com.example.android.customchoicelist;
 
-/**
- * Created by manav on 9/6/15.
- */
 public class Student {
     String name = null;
     boolean selected = false;

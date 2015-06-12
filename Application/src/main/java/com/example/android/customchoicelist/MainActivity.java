@@ -1,8 +1,5 @@
 package com.example.android.customchoicelist;
-
-/**
- * Created by manav on 6/6/15.
- */import android.app.Activity;
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -18,10 +15,6 @@ import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 
 import java.util.ArrayList;
-
-/**
- * Created by Kushagr Jolly on 30-May-15.
- */
 public class MainActivity extends Activity{
     EditText user,pass;
     ProgressDialog prgDialog;
@@ -125,7 +118,7 @@ public class MainActivity extends Activity{
     }
 
     private void launchActivity(boolean b) {
-        Intent i= new Intent(this,StudentListActivity.class);
+        Intent i= new Intent(this,IntermediateActivity.class);
         i.putExtra("resp",resp);
         startActivity(i);
     }
