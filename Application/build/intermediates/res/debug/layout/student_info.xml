@@ -22,4 +22,4 @@
         android:layout_alignBottom="@+id/checkBox1"
         android:layout_toRightOf="@+id/checkBox1" />
 
-</RelativeLayout><!-- From: file:/C:/Users/Manav/Documents/AndroidStudioProjects/Attendance-master/Application/src/main/res/layout/student_info.xml -->
+</RelativeLayout><!-- From: file:/D:/Android%20Studio%20Projects/Attendance/Application/src/main/res/layout/student_info.xml -->

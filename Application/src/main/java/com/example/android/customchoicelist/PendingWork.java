@@ -30,7 +30,7 @@ public class PendingWork extends Activity {
     private static String SOAP_ACTION = "http://pack1/pending";
     private static String NAMESPACE = "http://pack1/";
     private static String METHOD_NAME = "pending";
-    private static String URL = "http://172.16.6.84:8080/pgs/test?wsdl";
+    private static String URL = "http://192.168.1.105:8080/pgs/test?wsdl";
     Intent intent;
     String userType;
     MyCustomAdapter dataAdapter = null;
@@ -47,6 +47,7 @@ public class PendingWork extends Activity {
             "Guide Approval of Thesis",
     };
     private ProgressDialog prgDialog;
+    ArrayList<String> pendinglist;
 
 
     @Override
@@ -91,7 +92,7 @@ public class PendingWork extends Activity {
         new AsyncTask<Void, Void, String>() {
             @Override
             protected void onPreExecute() {
-                Log.d("PreExecute", "Running");
+                prgDialog.setMessage("Loading..........");
                 prgDialog.show();
             }
 
@@ -99,7 +100,7 @@ public class PendingWork extends Activity {
             protected String doInBackground(Void... params) {
 
                 SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
-                // request.addProperty();
+
 
                 //Declare the version of the SOAP request
                 SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER10);
@@ -116,40 +117,37 @@ public class PendingWork extends Activity {
 
 
                     // Get the SoapResult from the envelope body.
-                    SoapObject result = (SoapObject)envelope.bodyIn;
-/*
-                    if(result != null)
-                    {
-                        sname=new ArrayList<>();
-                        for (int i=0;i<sname.size();i++)
-                            sname.remove(i);
-                        atten=new ArrayList<String>();
-                        Log.d("count", String.valueOf(result1.getPropertyCount()));
-                        //Get the first property and change the label text
-                        for(int i=0;i<result1.getPropertyCount();i++) {
-                            String x=result1.getProperty(i).toString();
-                            String arr[] = x.split("#");
-                            rollnum.add(arr[1]);
-                            sname.add(arr[0]);
-                            Log.d("cxz",sname.get(i));
-                        }
+                    SoapObject result2 = (SoapObject)envelope.bodyIn;
 
+                    if(result2 != null)
+                    {
+                        pendinglist=new ArrayList<String>();
+                        Log.d("count", String.valueOf(result2.getPropertyCount()));
+                        //Get the first property and change the label text
+                        for(int i=0;i<result2.getPropertyCount();i++) {
+                            pendinglist.add(result2.getProperty(i).toString());
+                            Log.d("pendingList",pendinglist.get(i));
+                        }
                     }
                     else
                     {
 //                        Toast.makeText(getApplicationContext(), "No Response",Toast.LENGTH_LONG).show();
-                    }*/
+                    }
 
 
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
 
-
-
-
                 return null;
             }
+            @Override
+            protected void onPostExecute(String msg) {
+            Log.d("Loadinf finished","skjd");
+                prgDialog.hide();
+
+            }
+
         }.execute(null,null,null);
 
     }
