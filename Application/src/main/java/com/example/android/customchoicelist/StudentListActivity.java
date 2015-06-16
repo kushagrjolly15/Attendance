@@ -27,6 +27,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -53,10 +54,9 @@ public class StudentListActivity extends ListActivity implements AdapterView.OnI
     private static String NAMESPACE = "http://pack1/";
     private static String METHOD_NAME1 = "names";
     private static String METHOD_NAME2 = "insert";
-    private static String URL = "http://192.168.1.105:8080/pgs/test?wsdl";
+    private static String URL = "http://172.16.6.178:8080/pgs/test?wsdl";
     ArrayList<String> resp=new ArrayList<>();
     ArrayList<String> sname;
-    ArrayList<String> atten;
     String userType;
     String date;
     MyCustomAdapter dataAdapter = null;
@@ -69,6 +69,7 @@ public class StudentListActivity extends ListActivity implements AdapterView.OnI
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.xyz);
 
         prgDialog = new ProgressDialog(this);
@@ -182,8 +183,6 @@ public class StudentListActivity extends ListActivity implements AdapterView.OnI
     }
 
     private void checkButtonClick() {
-
-
         Button myButton = (Button) findViewById(R.id.findSelected);
         myButton.setOnClickListener(new View.OnClickListener() {
 
@@ -199,15 +198,10 @@ public class StudentListActivity extends ListActivity implements AdapterView.OnI
                     Student student = studentList.get(i);
                     if(student.isSelected()){
                         studentsPresent.add(rollnum.get(i));
-                        //Log.d("Present ", studentsPresent.get(i) + " " + sname.get(i));
-                        //responseText.append("\n" + studentsPresent + " Present");
+
                     }
                     else if(!student.isSelected()){
                         studentsAbsent.add(rollnum.get(i));
-                        //String ab =rollnum.get(i);
-
-
-                    //    responseText.append("\n" + studentsAbsent.get(i)+" Absent");
                     }
 
                 }

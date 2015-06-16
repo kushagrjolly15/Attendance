@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -30,7 +31,7 @@ public class PendingWork extends Activity {
     private static String SOAP_ACTION = "http://pack1/pending";
     private static String NAMESPACE = "http://pack1/";
     private static String METHOD_NAME = "pending";
-    private static String URL = "http://192.168.1.105:8080/pgs/test?wsdl";
+    private static String URL = "http://172.16.6.178:8080/pgs/test?wsdl";
     Intent intent;
     String userType;
     MyCustomAdapter dataAdapter = null;
@@ -53,6 +54,7 @@ public class PendingWork extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_pending_work);
         intent=getIntent();
         userType=intent.getStringExtra("userType");
@@ -60,9 +62,8 @@ public class PendingWork extends Activity {
         prgDialog = new ProgressDialog(this);
         // Set Cancelable as False
         prgDialog.setCancelable(false);
-        displayListView();
         getList();
-        //  checkClick();
+
     }
 
     private void displayListView() {
@@ -143,8 +144,9 @@ public class PendingWork extends Activity {
             }
             @Override
             protected void onPostExecute(String msg) {
-            Log.d("Loadinf finished","skjd");
+                displayListView();
                 prgDialog.hide();
+
 
             }
 
@@ -215,11 +217,7 @@ public class PendingWork extends Activity {
             PendingItem item = pendingItems.get(position);
             // Log.d("Pending Item", item.getName() + " " + item.isPending);
             holder.itemName.setText(item.getName());
-            if (item.isPending)
-                holder.isPending.setText("Pending");
-            else
-                holder.isPending.setText("Not Pending");
-            holder.itemName.setTag(item);
+            holder.isPending.setText(pendinglist.get(position));
 
             return convertView;
 

@@ -1,4 +1,5 @@
 package com.example.android.customchoicelist;
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -6,6 +7,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -21,13 +23,14 @@ public class MainActivity extends Activity{
     private static String SOAP_ACTION1 = "http://pack1/hello";
     private static String NAMESPACE = "http://pack1/";
     private static String METHOD_NAME1 = "hello";
-    private static String URL = "http://192.168.1.105:8080/pgs/test?wsdl";
+    private static String URL = "http://172.16.6.178:8080/pgs/test?wsdl";
     private String username,password;
     private ArrayList<String> resp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         resp= new ArrayList<>();
         setContentView(R.layout.activity_main);
         user=(EditText)findViewById(R.id.username);

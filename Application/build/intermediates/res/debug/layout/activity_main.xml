@@ -7,13 +7,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/username"
+        android:hint="Enter Username"
         android:layout_gravity="center_horizontal" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Enter Password"
         android:inputType="textPassword"
-        android:ems="10"
+        android:ems="20"
         android:id="@+id/password"
         android:layout_gravity="center_horizontal" />
 
