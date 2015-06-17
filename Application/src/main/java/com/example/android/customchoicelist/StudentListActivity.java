@@ -7,7 +7,8 @@
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, softwar idatestributed on an "AS IS" BASIS,
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
@@ -84,7 +85,12 @@ public class StudentListActivity extends ListActivity implements AdapterView.OnI
         Log.d("UserType =", userType);
 
         b=(Button)findViewById(R.id.button);
-   
+        if(userType.contentEquals("gu") || userType.contentEquals("ft")){
+            Calendar c = Calendar.getInstance();
+            date = c.get(Calendar.DATE)+"/"+c.get(Calendar.MONTH)+"/"+c.get(Calendar.YEAR);
+            b.setText(date);
+        }else if(userType.contentEquals("pr") || userType.contentEquals("prhd")){
+
 
             b.setOnClickListener(new View.OnClickListener() {
                 @Override
