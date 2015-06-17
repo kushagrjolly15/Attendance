@@ -31,7 +31,7 @@ public class PendingWork extends Activity {
     private static String SOAP_ACTION = "http://pack1/pending";
     private static String NAMESPACE = "http://pack1/";
     private static String METHOD_NAME = "pending";
-    private static String URL = "http://172.16.6.178:8080/pgs/test?wsdl";
+    private static String URL = "http://172.16.6.123:8080/pgs/test?wsdl";
     Intent intent;
     String userType;
     MyCustomAdapter dataAdapter = null;
