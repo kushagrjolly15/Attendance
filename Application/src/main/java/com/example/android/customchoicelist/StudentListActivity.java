@@ -42,7 +42,6 @@ import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class StudentListActivity extends ListActivity implements AdapterView.OnItemSelectedListener{
 
@@ -85,12 +84,6 @@ public class StudentListActivity extends ListActivity implements AdapterView.OnI
         Log.d("UserType =", userType);
 
         b=(Button)findViewById(R.id.button);
-        if(userType.contentEquals("gu") || userType.contentEquals("ft")){
-            Calendar c = Calendar.getInstance();
-            date = c.get(Calendar.DATE)+"/"+c.get(Calendar.MONTH)+"/"+c.get(Calendar.YEAR);
-            b.setText(date);
-        }else if(userType.contentEquals("pr") || userType.contentEquals("prhd")){
-
 
             b.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -101,7 +94,7 @@ public class StudentListActivity extends ListActivity implements AdapterView.OnI
                     newFragment.show(getFragmentManager(), "datePicker");
                 }
             });
-        }
+        
         spinner = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(StudentListActivity.this,
                 android.R.layout.simple_spinner_item,resp);
