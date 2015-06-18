@@ -42,4 +42,4 @@
     <ListView android:id="@+id/listView1" android:layout_width="fill_parent"
         android:layout_height="fill_parent" />
 </LinearLayout>
-<!-- From: file:/D:/Android%20Studio%20Projects/Attendance/Application/src/main/res/layout/sample_main.xml -->
+<!-- From: file:/C:/Users/Manav/Documents/GitHub/Attendance/Application/src/main/res/layout/sample_main.xml -->

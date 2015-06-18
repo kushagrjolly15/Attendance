@@ -3,6 +3,7 @@
     package="com.example.android.customchoicelist"
     android:versionCode="1"
     android:versionName="1.0" >
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -13,11 +14,7 @@
         <activity
             android:name=".MainActivity"
             android:label="Attendance" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".StudentListActivity"
@@ -30,6 +27,14 @@
         <activity
             android:name=".PendingWork"
             android:label="@string/title_activity_pending_work" >
+        </activity>
+        <activity
+            android:name=".SplashScreen"
+            android:label="@string/title_activity_splash_screen" >  <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
     </application>
 

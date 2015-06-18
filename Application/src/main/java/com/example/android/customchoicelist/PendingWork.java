@@ -36,7 +36,7 @@ public class PendingWork extends Activity {
     String userType;
     MyCustomAdapter dataAdapter = null;
     String[] fields ={
-            "Faculty Applroval",
+            "Faculty Approval",
             "Guide Approval",
             "Member Approval",
             "Grades Sem I",

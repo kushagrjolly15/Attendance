@@ -18,11 +18,6 @@
         <activity
             android:name="com.example.android.customchoicelist.MainActivity"
             android:label="Attendance" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="com.example.android.customchoicelist.StudentListActivity"
@@ -35,6 +30,15 @@
         <activity
             android:name="com.example.android.customchoicelist.PendingWork"
             android:label="@string/title_activity_pending_work" >
+        </activity>
+        <activity
+            android:name="com.example.android.customchoicelist.SplashScreen"
+            android:label="@string/title_activity_splash_screen" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

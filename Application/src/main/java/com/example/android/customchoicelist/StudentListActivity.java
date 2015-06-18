@@ -69,7 +69,7 @@ public class StudentListActivity extends ListActivity implements AdapterView.OnI
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.xyz);
+        setContentView(R.layout.activity_studentlist);
 
         prgDialog = new ProgressDialog(this);
         // Set Cancelable as False
