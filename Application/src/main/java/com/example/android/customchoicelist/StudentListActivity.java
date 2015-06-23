@@ -53,7 +53,7 @@ public class StudentListActivity extends ListActivity implements AdapterView.OnI
     private static String NAMESPACE = "http://pack1/";
     private static String METHOD_NAME1 = "names";
     private static String METHOD_NAME2 = "insert";
-    private static String URL = "http://172.16.6.123:8080/pgs/test?wsdl";
+    private static String URL = "http://192.168.3.12:8080/pgs/test?wsdl";
     ArrayList<String> resp=new ArrayList<>();
     ArrayList<String> sname;
     String userType;

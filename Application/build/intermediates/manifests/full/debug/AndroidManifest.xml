@@ -33,7 +33,7 @@
         </activity>
         <activity
             android:name="com.example.android.customchoicelist.SplashScreen"
-            android:label="@string/title_activity_splash_screen" >
+            android:label="PGS" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

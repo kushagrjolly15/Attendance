@@ -23,7 +23,7 @@ public class MainActivity extends Activity{
     private static String SOAP_ACTION1 = "http://pack1/hello";
     private static String NAMESPACE = "http://pack1/";
     private static String METHOD_NAME1 = "hello";
-    private static String URL = "http://172.16.6.123:8080/pgs/test?wsdl";
+    private static String URL = "http://192.168.3.12:8080/pgs/test?wsdl";
     private String username,password;
     private ArrayList<String> resp;
 
