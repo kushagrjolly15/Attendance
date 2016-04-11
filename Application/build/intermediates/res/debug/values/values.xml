@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/D:/Android%20Studio%20Projects/Attendance/Application/src/main/res/values/dimens.xml -->
+    <!-- From: file:/E:/Android/Android%20Studio%20Projects/Attendance/Application/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <!-- From: file:/D:/Android%20Studio%20Projects/Attendance/Application/src/main/res/values/template-dimens.xml -->
+    <!-- From: file:/E:/Android/Android%20Studio%20Projects/Attendance/Application/src/main/res/values/template-dimens.xml -->
     <eat-comment/>
     <dimen name="horizontal_page_margin">@dimen/margin_medium</dimen>
     <dimen name="margin_huge">64dp</dimen>
@@ -12,22 +12,22 @@
     <dimen name="margin_medium">8dp</dimen>
     <dimen name="margin_small">8dp</dimen>
     <dimen name="margin_tiny">4dp</dimen>
-    <!-- From: file:/D:/Android%20Studio%20Projects/Attendance/Application/src/main/res/values/dimens.xml -->
+    <!-- From: file:/E:/Android/Android%20Studio%20Projects/Attendance/Application/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="page_margin">@dimen/margin_medium</dimen>
-    <!-- From: file:/D:/Android%20Studio%20Projects/Attendance/Application/src/main/res/values/template-dimens.xml -->
+    <!-- From: file:/E:/Android/Android%20Studio%20Projects/Attendance/Application/src/main/res/values/template-dimens.xml -->
     <eat-comment/>
     <dimen name="vertical_page_margin">@dimen/margin_medium</dimen>
-    <!-- From: file:/D:/Android%20Studio%20Projects/Attendance/Application/src/main/res/values/strings.xml -->
+    <!-- From: file:/E:/Android/Android%20Studio%20Projects/Attendance/Application/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="action_settings">Settings</string>
-    <!-- From: file:/D:/Android%20Studio%20Projects/Attendance/Application/src/main/res/values/base-strings.xml -->
+    <!-- From: file:/E:/Android/Android%20Studio%20Projects/Attendance/Application/src/main/res/values/base-strings.xml -->
     <eat-comment/>
     <string name="app_name">CustomChoiceList</string>
-    <!-- From: file:/D:/Android%20Studio%20Projects/Attendance/Application/src/main/res/values/strings.xml -->
+    <!-- From: file:/E:/Android/Android%20Studio%20Projects/Attendance/Application/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="hello_world">Hello world!</string>
-    <!-- From: file:/D:/Android%20Studio%20Projects/Attendance/Application/src/main/res/values/base-strings.xml -->
+    <!-- From: file:/E:/Android/Android%20Studio%20Projects/Attendance/Application/src/main/res/values/base-strings.xml -->
     <eat-comment/>
     <string name="intro_message">
         <![CDATA[
@@ -39,18 +39,18 @@
         
         ]]>
     </string>
-    <!-- From: file:/D:/Android%20Studio%20Projects/Attendance/Application/src/main/res/values/strings.xml -->
+    <!-- From: file:/E:/Android/Android%20Studio%20Projects/Attendance/Application/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="title_activity_intermediate">IntermediateActivity</string>
     <string name="title_activity_pending_work">PendingWork</string>
     <string name="title_activity_splash_screen">SplashScreen</string>
-    <!-- From: file:/D:/Android%20Studio%20Projects/Attendance/Application/src/main/res/values/template-styles.xml -->
+    <!-- From: file:/E:/Android/Android%20Studio%20Projects/Attendance/Application/src/main/res/values/template-styles.xml -->
     <eat-comment/>
     <style name="AppTheme" parent="Theme.Sample"/>
     <style name="Theme.Base" parent="android:Theme.Light"/>
     <style name="Theme.Sample" parent="Theme.Base"/>
     <style name="Widget"/>
-    <!-- From: file:/D:/Android%20Studio%20Projects/Attendance/Application/src/main/res/values/styles.xml -->
+    <!-- From: file:/E:/Android/Android%20Studio%20Projects/Attendance/Application/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="Widget.DescriptionBar">
 
@@ -61,7 +61,7 @@
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
         <item name="android:lineSpacingMultiplier">1.1</item>
     </style>
-    <!-- From: file:/D:/Android%20Studio%20Projects/Attendance/Application/src/main/res/values/template-styles.xml -->
+    <!-- From: file:/E:/Android/Android%20Studio%20Projects/Attendance/Application/src/main/res/values/template-styles.xml -->
     <eat-comment/>
     <style name="Widget.SampleMessage">
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
